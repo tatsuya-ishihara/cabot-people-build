@@ -26,6 +26,9 @@ jobs:
         git clone -b support-qemu-build https://github.com/CMU-cabot/cabot-people
         cd ./cabot-people
         ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../
         ./build-docker.sh -p -i -w -c realsense
 
   build-people-framos:
@@ -51,6 +54,9 @@ jobs:
         git clone -b support-qemu-build https://github.com/CMU-cabot/cabot-people
         cd ./cabot-people
         ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../
         ./build-docker.sh -p -i -w -c framos
 
   build-people-jetson:
@@ -76,6 +82,9 @@ jobs:
         git clone -b support-qemu-build https://github.com/CMU-cabot/cabot-people
         cd ./cabot-people
         ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../
         ./build-docker.sh -p -i -w -c realsense aarch64
 
   build-people-framos-jetson:
@@ -101,4 +110,7 @@ jobs:
         git clone -b support-qemu-build https://github.com/CMU-cabot/cabot-people
         cd ./cabot-people
         ./setup-dependency.sh
+        cd ./cabot-common
+        git checkout -b support-qemu-build origin/support-qemu-build
+        cd ../
         ./build-docker.sh -p -i -w -c framos aarch64
