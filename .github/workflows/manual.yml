@@ -26,7 +26,7 @@ jobs:
 
     - name: Build cabot-people 
       run: | 
-        git clone https://github.com/CMU-cabot/cabot-people
+        git clone -b support-qemu-build https://github.com/CMU-cabot/cabot-people
         cd ./cabot-people
         ./setup-dependency.sh
-        ./build-docker.sh -p -i -w -y -c realsense aarch64
+        ./build-docker.sh -p -i -w -c realsense aarch64
