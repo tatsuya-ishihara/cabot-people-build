@@ -4,25 +4,29 @@ on: [ workflow_dispatch ]
 
 jobs:
   build-people:
-    uses: tatsuya-ishihara/cabot-people-build/.github/workflows/build.yaml@main
-    with:
-      camera: realsense
-      arch: x86_64
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Maximize build space
+      run:  |
+            sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
+            sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+            sudo rm -rf /opt/ghc
+            echo "Available storage:"
+            df -h
 
-  build-people-framos:
-    uses: tatsuya-ishihara/cabot-people-build/.github/workflows/build.yaml@main
-    with:
-      camera: framos
-      arch: x86_64
+    - uses: actions/checkout@v4
 
-  build-people-jetson:
-    uses: tatsuya-ishihara/cabot-people-build/.github/workflows/build.yaml@main
-    with:
-      camera: realsense
-      arch: aarch64
+    - uses: docker/setup-qemu-action@v3
 
-  build-people-framos-jetson:
-    uses: tatsuya-ishihara/cabot-people-build/.github/workflows/build.yaml@main
-    with:
-      camera: framos
-      arch: aarch64
+    - name: Install vcs
+      run: pip3 install vcstool
+
+    - name: Check QEMU
+      run: ls /proc/sys/fs/binfmt_misc/qemu-arm
+
+    - name: Build cabot-people 
+      run: | 
+        git clone -b support-qemu-build https://github.com/CMU-cabot/cabot-people
+        cd ./cabot-people
+        ./setup-dependency.sh
+        ./build-docker.sh -p -i -w -c realsense
