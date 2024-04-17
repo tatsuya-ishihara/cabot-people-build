@@ -11,7 +11,7 @@ on:
         type: string
 
 jobs:
-  reusable_workflow_job:
+  triage:
     runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
