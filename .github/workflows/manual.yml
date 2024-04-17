@@ -17,8 +17,6 @@ jobs:
     - uses: actions/checkout@v4
 
     - uses: docker/setup-qemu-action@v3
-      with:
-        platforms: linux/arm64
 
     - name: Install vcs
       run: pip3 install vcstool
@@ -27,6 +25,5 @@ jobs:
       run: | 
         git clone https://github.com/CMU-cabot/cabot-people
         cd ./cabot-people
-        ./setup-model.sh
         ./setup-dependency.sh
         ./build-docker.sh -p -i -w -y -c realsense aarch64
