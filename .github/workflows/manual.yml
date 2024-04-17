@@ -21,7 +21,7 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Build cabot-people 
+    - name: Build people
       run: | 
         git clone -b support-qemu-build https://github.com/CMU-cabot/cabot-people
         cd ./cabot-people
@@ -46,7 +46,7 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Build cabot-people 
+    - name: Build people-framos
       run: | 
         git clone -b support-qemu-build https://github.com/CMU-cabot/cabot-people
         cd ./cabot-people
@@ -71,7 +71,7 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Build cabot-people 
+    - name: Build people-jetson
       run: | 
         git clone -b support-qemu-build https://github.com/CMU-cabot/cabot-people
         cd ./cabot-people
@@ -96,7 +96,7 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Build cabot-people 
+    - name: Build people-framos-jetson
       run: | 
         git clone -b support-qemu-build https://github.com/CMU-cabot/cabot-people
         cd ./cabot-people
