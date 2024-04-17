@@ -1,0 +1,28 @@
+name: Build Docker Image
+
+on: [ workflow_dispatch ]
+
+jobs:
+  build-people:
+    uses: tatsuya-ishihara/cabot-people-build/.github/workflows/build.yaml@main
+    with:
+      camera: realsense
+      arch: x86_64
+
+  build-people-framos:
+    uses: tatsuya-ishihara/cabot-people-build/.github/workflows/build.yaml@main
+    with:
+      camera: framos
+      arch: x86_64
+
+  build-people-jetson:
+    uses: tatsuya-ishihara/cabot-people-build/.github/workflows/build.yaml@main
+    with:
+      camera: realsense
+      arch: aarch64
+
+  build-people-framos-jetson:
+    uses: tatsuya-ishihara/cabot-people-build/.github/workflows/build.yaml@main
+    with:
+      camera: framos
+      arch: aarch64
