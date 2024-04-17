@@ -4,7 +4,7 @@ on: [ workflow_dispatch ]
 
 jobs:
   build-people:
-    uses: tatsuya-ishihara/cabot-people-build/.github/workflows/build.yaml
+    uses: tatsuya-ishihara/cabot-people-build/.github/workflows/build.yaml@main
     with:
       camera: realsense
       arch: x86_64
