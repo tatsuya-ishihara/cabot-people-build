@@ -21,9 +21,6 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Check QEMU
-      run: ls /proc/sys/fs/binfmt_misc/qemu-arm
-
     - name: Build cabot-people 
       run: | 
         git clone -b support-qemu-build https://github.com/CMU-cabot/cabot-people
