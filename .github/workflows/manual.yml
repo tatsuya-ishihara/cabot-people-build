@@ -20,3 +20,11 @@ jobs:
 
     - name: Install vcs
       run: pip3 install vcstool
+
+    - name: Build cabot-people 
+      run: | 
+        git clone https://github.com/CMU-cabot/cabot-people
+        cd ./cabot-people
+        ./setup-model.sh
+        ./setup-dependency.sh
+        ./build-docker.sh -p -i -w -y -c realsense aarch64
