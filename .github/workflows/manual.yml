@@ -85,7 +85,6 @@ jobs:
         cd ./cabot-common
         git checkout -b support-qemu-build origin/support-qemu-build
         cd ../
-        sed -i 's:make -j$(nproc):make -j3:' docker/opencv/Dockerfile.jetson
         ./build-docker.sh -p -i -w -c realsense aarch64
 
   build-people-framos-jetson:
@@ -114,5 +113,4 @@ jobs:
         cd ./cabot-common
         git checkout -b support-qemu-build origin/support-qemu-build
         cd ../
-        sed -i 's:make -j$(nproc):make -j3:' docker/opencv/Dockerfile.jetson
         ./build-docker.sh -p -i -w -c framos aarch64
