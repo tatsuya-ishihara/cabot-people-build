@@ -23,4 +23,4 @@ jobs:
             uname -m
             echo $(nproc)
             export DOCKER_DEFAULT_PLATFORM=linux/aarch64
-            docker run ubuntu:22.04 /bin/echo "uname -m; echo $(nproc)"
+            docker run ubuntu:22.04 sh -c "uname -m; echo $(nproc)"
