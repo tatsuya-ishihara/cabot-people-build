@@ -14,6 +14,13 @@ jobs:
             echo "Available storage:"
             df -h
 
+    - name: Maximize build space 2
+      run:  |
+            sudo du -h /usr/local/share/powershell
+            sudo du -h /usr/share/swift
+            sudo du -h /usr/local/.ghcup
+            sudo du -h /usr/lib/jvm
+
     - name: Free disk space
       run: |
         sudo docker rmi $(docker image ls -aq) >/dev/null 2>&1 || true
