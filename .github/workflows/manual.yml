@@ -4,13 +4,17 @@ on: [ workflow_dispatch ]
 
 jobs:
   build-people:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
             sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
             sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
             sudo rm -rf /opt/ghc
+            sudo rm -rf /usr/local/share/powershell
+            sudo rm -rf /usr/share/swift
+            sudo rm -rf /usr/local/.ghcup
+            sudo rm -rf /usr/lib/jvm
             echo "Available storage:"
             df -h
 
@@ -32,13 +36,17 @@ jobs:
         ./build-docker.sh -p -i -w -c realsense
 
   build-people-framos:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
             sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
             sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
             sudo rm -rf /opt/ghc
+            sudo rm -rf /usr/local/share/powershell
+            sudo rm -rf /usr/share/swift
+            sudo rm -rf /usr/local/.ghcup
+            sudo rm -rf /usr/lib/jvm
             echo "Available storage:"
             df -h
 
@@ -60,13 +68,17 @@ jobs:
         ./build-docker.sh -p -i -w -c framos
 
   build-people-jetson:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
             sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
             sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
             sudo rm -rf /opt/ghc
+            sudo rm -rf /usr/local/share/powershell
+            sudo rm -rf /usr/share/swift
+            sudo rm -rf /usr/local/.ghcup
+            sudo rm -rf /usr/lib/jvm
             echo "Available storage:"
             df -h
 
@@ -88,13 +100,17 @@ jobs:
         ./build-docker.sh -p -i -w -c realsense aarch64
 
   build-people-framos-jetson:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
             sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
             sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
             sudo rm -rf /opt/ghc
+            sudo rm -rf /usr/local/share/powershell
+            sudo rm -rf /usr/share/swift
+            sudo rm -rf /usr/local/.ghcup
+            sudo rm -rf /usr/lib/jvm
             echo "Available storage:"
             df -h
 
