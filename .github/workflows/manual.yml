@@ -53,6 +53,8 @@ jobs:
             sudo rm -rf /usr/share/swift
             sudo rm -rf /usr/local/.ghcup
             sudo rm -rf /usr/lib/jvm
+            sudo rm -rf "/usr/local/share/boost"
+            sudo rm -rf "$AGENT_TOOLSDIRECTORY"
             echo "Available storage:"
             df -h
 
@@ -123,6 +125,8 @@ jobs:
             sudo rm -rf /usr/share/swift
             sudo rm -rf /usr/local/.ghcup
             sudo rm -rf /usr/lib/jvm
+            sudo rm -rf "/usr/local/share/boost"
+            sudo rm -rf "$AGENT_TOOLSDIRECTORY"
             echo "Available storage:"
             df -h
 
@@ -193,6 +197,8 @@ jobs:
             sudo rm -rf /usr/share/swift
             sudo rm -rf /usr/local/.ghcup
             sudo rm -rf /usr/lib/jvm
+            sudo rm -rf "/usr/local/share/boost"
+            sudo rm -rf "$AGENT_TOOLSDIRECTORY"
             echo "Available storage:"
             df -h
 
@@ -264,6 +270,8 @@ jobs:
             sudo rm -rf /usr/share/swift
             sudo rm -rf /usr/local/.ghcup
             sudo rm -rf /usr/lib/jvm
+            sudo rm -rf "/usr/local/share/boost"
+            sudo rm -rf "$AGENT_TOOLSDIRECTORY"
             echo "Available storage:"
             df -h
 
