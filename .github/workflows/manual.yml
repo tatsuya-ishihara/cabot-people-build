@@ -8,6 +8,44 @@ jobs:
     steps:
     - name: Maximize build space
       run:  |
+            sudo docker rmi $(docker image ls -aq)
+            sudo apt purge -y \
+              ansible* \
+              aria2* \
+              aspnetcore* \
+              azure-cli* \
+              cabal* \
+              clang* \
+              dotnet-* \
+              firefox* \
+              gfortran-* \
+              ghc* \
+              google-chrome-stable* \
+              google-cloud-sdk* \
+              heroku* \
+              imagemagick* \
+              javascript* \
+              kubectl* \
+              llvm* \
+              mono* \
+              mysql* \
+              nginx* \
+              node* \
+              npm* \
+              nuget* \
+              php* \
+              postgresql* \
+              powershell* \
+              rpm* \
+              ruby* \
+              sqlite3* \
+              subversion \
+              temurin* \
+              tmux* \
+              vim* \
+              yarn*
+            sudo apt-get autoremove -y >/dev/null 2>&1 || true
+            sudo apt-get autoclean -y >/dev/null 2>&1 || true
             sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
             sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
             sudo rm -rf /opt/ghc
@@ -15,7 +53,6 @@ jobs:
             sudo rm -rf /usr/share/swift
             sudo rm -rf /usr/local/.ghcup
             sudo rm -rf /usr/lib/jvm
-            sudo docker rmi $(docker image ls -aq)
             echo "Available storage:"
             df -h
 
@@ -41,6 +78,44 @@ jobs:
     steps:
     - name: Maximize build space
       run:  |
+            sudo docker rmi $(docker image ls -aq)
+            sudo apt purge -y \
+              ansible* \
+              aria2* \
+              aspnetcore* \
+              azure-cli* \
+              cabal* \
+              clang* \
+              dotnet-* \
+              firefox* \
+              gfortran-* \
+              ghc* \
+              google-chrome-stable* \
+              google-cloud-sdk* \
+              heroku* \
+              imagemagick* \
+              javascript* \
+              kubectl* \
+              llvm* \
+              mono* \
+              mysql* \
+              nginx* \
+              node* \
+              npm* \
+              nuget* \
+              php* \
+              postgresql* \
+              powershell* \
+              rpm* \
+              ruby* \
+              sqlite3* \
+              subversion \
+              temurin* \
+              tmux* \
+              vim* \
+              yarn*
+            sudo apt-get autoremove -y >/dev/null 2>&1 || true
+            sudo apt-get autoclean -y >/dev/null 2>&1 || true
             sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
             sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
             sudo rm -rf /opt/ghc
@@ -48,7 +123,6 @@ jobs:
             sudo rm -rf /usr/share/swift
             sudo rm -rf /usr/local/.ghcup
             sudo rm -rf /usr/lib/jvm
-            sudo docker rmi $(docker image ls -aq)
             echo "Available storage:"
             df -h
 
@@ -74,6 +148,44 @@ jobs:
     steps:
     - name: Maximize build space
       run:  |
+            sudo docker rmi $(docker image ls -aq)
+            sudo apt purge -y \
+              ansible* \
+              aria2* \
+              aspnetcore* \
+              azure-cli* \
+              cabal* \
+              clang* \
+              dotnet-* \
+              firefox* \
+              gfortran-* \
+              ghc* \
+              google-chrome-stable* \
+              google-cloud-sdk* \
+              heroku* \
+              imagemagick* \
+              javascript* \
+              kubectl* \
+              llvm* \
+              mono* \
+              mysql* \
+              nginx* \
+              node* \
+              npm* \
+              nuget* \
+              php* \
+              postgresql* \
+              powershell* \
+              rpm* \
+              ruby* \
+              sqlite3* \
+              subversion \
+              temurin* \
+              tmux* \
+              vim* \
+              yarn*
+            sudo apt-get autoremove -y >/dev/null 2>&1 || true
+            sudo apt-get autoclean -y >/dev/null 2>&1 || true
             sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
             sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
             sudo rm -rf /opt/ghc
@@ -81,7 +193,6 @@ jobs:
             sudo rm -rf /usr/share/swift
             sudo rm -rf /usr/local/.ghcup
             sudo rm -rf /usr/lib/jvm
-            sudo docker rmi $(docker image ls -aq)
             echo "Available storage:"
             df -h
 
@@ -108,6 +219,44 @@ jobs:
     steps:
     - name: Maximize build space
       run:  |
+            sudo docker rmi $(docker image ls -aq)
+            sudo apt purge -y \
+              ansible* \
+              aria2* \
+              aspnetcore* \
+              azure-cli* \
+              cabal* \
+              clang* \
+              dotnet-* \
+              firefox* \
+              gfortran-* \
+              ghc* \
+              google-chrome-stable* \
+              google-cloud-sdk* \
+              heroku* \
+              imagemagick* \
+              javascript* \
+              kubectl* \
+              llvm* \
+              mono* \
+              mysql* \
+              nginx* \
+              node* \
+              npm* \
+              nuget* \
+              php* \
+              postgresql* \
+              powershell* \
+              rpm* \
+              ruby* \
+              sqlite3* \
+              subversion \
+              temurin* \
+              tmux* \
+              vim* \
+              yarn*
+            sudo apt-get autoremove -y >/dev/null 2>&1 || true
+            sudo apt-get autoclean -y >/dev/null 2>&1 || true
             sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
             sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
             sudo rm -rf /opt/ghc
@@ -115,7 +264,6 @@ jobs:
             sudo rm -rf /usr/share/swift
             sudo rm -rf /usr/local/.ghcup
             sudo rm -rf /usr/lib/jvm
-            sudo docker rmi $(docker image ls -aq)
             echo "Available storage:"
             df -h
 
