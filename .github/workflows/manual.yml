@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Build Docker Image (people, people-framos, people-jetson, people-framos-jetson)
 
 on: [ workflow_dispatch ]
 
