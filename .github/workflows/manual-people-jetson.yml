@@ -76,12 +76,15 @@ jobs:
 
     - name: Build people-jetson (prebuild)
       run: | 
+        cd ./cabot-people
         ./build-docker.sh -p -c realsense aarch64
 
     - name: Build people-jetson (build image)
       run: | 
+        cd ./cabot-people
         ./build-docker.sh -i -c realsense aarch64
 
     - name: Build people-jetson (build workspace)
       run: | 
+        cd ./cabot-people
         ./build-docker.sh -w -c realsense aarch64
