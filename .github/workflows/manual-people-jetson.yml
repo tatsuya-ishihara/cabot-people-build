@@ -65,7 +65,7 @@ jobs:
     - name: Install vcs
       run: pip3 install vcstool
 
-    - name: Build people-jetson
+    - name: Build people-jetson (checkout)
       run: | 
         git clone -b support-qemu-build https://github.com/CMU-cabot/cabot-people
         cd ./cabot-people
@@ -73,5 +73,15 @@ jobs:
         cd ./cabot-common
         git checkout -b support-qemu-build origin/support-qemu-build
         cd ../
-        sed -i "s:make -j\$(nproc):make:" docker/opencv/Dockerfile.jetson
-        ./build-docker.sh -p -i -w -c realsense aarch64
+
+    - name: Build people-jetson (prebuild)
+      run: | 
+        ./build-docker.sh -p -c realsense aarch64
+
+    - name: Build people-jetson (build image)
+      run: | 
+        ./build-docker.sh -i -c realsense aarch64
+
+    - name: Build people-jetson (build workspace)
+      run: | 
+        ./build-docker.sh -w -c realsense aarch64
