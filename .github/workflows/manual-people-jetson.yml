@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Build Docker Image (people-jetson)
 
 on: [ workflow_dispatch ]
 
