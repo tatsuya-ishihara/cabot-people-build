@@ -3,35 +3,151 @@ name: Check Environment
 on: [ workflow_dispatch ]
 
 jobs:
-  check-env:
+  build:
     runs-on: ubuntu-20.04
     steps:
     - name: Maximize build space
       run:  |
+            sudo docker rmi $(docker image ls -aq)
+            sudo apt purge -y \
+              ansible* \
+              aria2* \
+              aspnetcore* \
+              azure-cli* \
+              cabal* \
+              clang* \
+              dotnet-* \
+              firefox* \
+              gfortran-* \
+              ghc* \
+              google-chrome-stable* \
+              google-cloud-sdk* \
+              heroku* \
+              imagemagick* \
+              javascript* \
+              kubectl* \
+              llvm* \
+              mono* \
+              mysql* \
+              nginx* \
+              node* \
+              npm* \
+              nuget* \
+              php* \
+              postgresql* \
+              powershell* \
+              rpm* \
+              ruby* \
+              sqlite3* \
+              subversion \
+              temurin* \
+              tmux* \
+              vim* \
+              yarn*
+            sudo apt-get autoremove -y >/dev/null 2>&1 || true
+            sudo apt-get autoclean -y >/dev/null 2>&1 || true
             sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
             sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
             sudo rm -rf /opt/ghc
-            echo "Available storage:"
-            df -h
-
-    - name: Maximize build space 2
-      run:  |
-            sudo du -h /usr/local/share/powershell
-            sudo du -h /usr/share/swift
-            sudo du -h /usr/local/.ghcup
-            sudo du -h /usr/lib/jvm
-            echo "Available storage:"
-            df -h
-
-    - name: Maximize build space 3
-      run:  |
-           sudo apt purge -y \
-            google-cloud-sdk \
-            sudo apt-get autoremove -y
-            sudo apt-get autoclean -y
+            sudo rm -rf /usr/local/share/powershell
+            sudo rm -rf /usr/share/swift
+            sudo rm -rf /usr/local/.ghcup
+            sudo rm -rf /usr/lib/jvm
+            sudo rm -rf "/usr/local/share/boost"
+            sudo rm -rf "$AGENT_TOOLSDIRECTORY"
             echo "Available storage:"
             df -h
 
     - uses: actions/checkout@v4
 
     - uses: docker/setup-qemu-action@v3
+
+    - name: Install vcs
+      run: pip3 install vcstool
+
+    - name: pull docker
+      run:  |
+        docker pull hogepodge/notebook-pytorch:latest
+
+    - name: check disk
+      run:  |
+        docker image ls -a
+        df -h
+
+    - name: upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: hogepodge/notebook-pytorch
+        path: /tmp/notebook-pytorch.tar
+
+  use:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+    - name: Maximize build space
+      run:  |
+            sudo docker rmi $(docker image ls -aq)
+            sudo apt purge -y \
+              ansible* \
+              aria2* \
+              aspnetcore* \
+              azure-cli* \
+              cabal* \
+              clang* \
+              dotnet-* \
+              firefox* \
+              gfortran-* \
+              ghc* \
+              google-chrome-stable* \
+              google-cloud-sdk* \
+              heroku* \
+              imagemagick* \
+              javascript* \
+              kubectl* \
+              llvm* \
+              mono* \
+              mysql* \
+              nginx* \
+              node* \
+              npm* \
+              nuget* \
+              php* \
+              postgresql* \
+              powershell* \
+              rpm* \
+              ruby* \
+              sqlite3* \
+              subversion \
+              temurin* \
+              tmux* \
+              vim* \
+              yarn*
+            sudo apt-get autoremove -y >/dev/null 2>&1 || true
+            sudo apt-get autoclean -y >/dev/null 2>&1 || true
+            sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
+            sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+            sudo rm -rf /opt/ghc
+            sudo rm -rf /usr/local/share/powershell
+            sudo rm -rf /usr/share/swift
+            sudo rm -rf /usr/local/.ghcup
+            sudo rm -rf /usr/lib/jvm
+            sudo rm -rf "/usr/local/share/boost"
+            sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+            echo "Available storage:"
+            df -h
+
+    - uses: actions/checkout@v4
+
+    - uses: docker/setup-qemu-action@v3
+
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: notebook-pytorch
+        path: /tmp
+
+    - name: load image
+      run: |
+        docker load --input /tmp/notebook-pytorch.tar
+        docker image ls -a
+        df -h
